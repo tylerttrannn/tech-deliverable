@@ -40,4 +40,4 @@ class JSONDatabase(dict[str, VT]):
         """Save database by writing to file."""
         log.info("Saving database to file")
         with open(self._path, "w") as file:
-            json.dump(self, file, indent=4)
+            json.dump(self, file, indent="\t")
