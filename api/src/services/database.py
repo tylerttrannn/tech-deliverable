@@ -26,13 +26,13 @@ class JSONDatabase(dict[str, VT]):
             except json.JSONDecodeError:
                 raise ValueError("Specified data file is not serializable.")
 
-        if type(data) != dict:
+        if not isinstance(data, dict):
             raise ValueError("Data file does not contain a valid database.")
 
         self.update(data)
 
     def __setitem__(self, key: str, value: VT) -> None:
-        if type(key) != str:
+        if not isinstance(key, str):
             raise TypeError(f"Database key must be str, not {type(key)}")
         return super().__setitem__(key, value)
 
