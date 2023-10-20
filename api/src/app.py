@@ -13,6 +13,7 @@ database: JSONDatabase[list[dict[str, Any]]] = JSONDatabase("data/database.json"
 
 @app.on_event("startup")
 def on_startup() -> None:
+    """Initialize database when starting API server."""
     if "posts" not in database:
         print("Adding posts entry to database")
         database["posts"] = []
@@ -20,6 +21,7 @@ def on_startup() -> None:
 
 @app.on_event("shutdown")
 def on_shutdown() -> None:
+    """Close database when stopping API server."""
     database.close()
 
 
@@ -27,7 +29,7 @@ def on_shutdown() -> None:
 def post_message(name: str = Form(), message: str = Form()) -> RedirectResponse:
     """
     Process a user submitting a new quote.
-    You should not modify this function.
+    You should not modify this function except for the return value.
     """
     now = datetime.now().replace(microsecond=0)
     post = {
@@ -37,6 +39,7 @@ def post_message(name: str = Form(), message: str = Form()) -> RedirectResponse:
     }
     database["posts"].append(post)
 
+    # You may modify the return value as needed to support other functionality
     return RedirectResponse("/", status.HTTP_303_SEE_OTHER)
 
 
