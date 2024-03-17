@@ -109,7 +109,7 @@ For the backend, we've provided a route which handles the form submission for
 creating a quote, but you'll also need to create a new API route which allows
 the frontend to retrieve quotes from the database.
 
-Our [deliverable requirements](https://hackatuci.notion.site/2023-2024-Tech-Team-Deliverable-1b3332a2e729487ea9e77c3bc80d9faa)
+Our [deliverable requirements](https://hackatuci.notion.site/Hack-at-UCI-Tech-Deliverable-2024-2025-4b3080f485b24c60ba3c0da37aa1b972)
 describe the full specifications of the deliverable along with additional notes
 and resources.
 
