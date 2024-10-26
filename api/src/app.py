@@ -1,12 +1,12 @@
+from contextlib import asynccontextmanager
 from datetime import datetime
+from typing import AsyncIterator
 
 from fastapi import FastAPI, Form, status
 from fastapi.responses import RedirectResponse
 from typing_extensions import TypedDict
 
 from services.database import JSONDatabase
-
-app = FastAPI()
 
 
 class Quote(TypedDict):
@@ -18,18 +18,19 @@ class Quote(TypedDict):
 database: JSONDatabase[list[Quote]] = JSONDatabase("data/database.json")
 
 
-@app.on_event("startup")
-def on_startup() -> None:
-    """Initialize database when starting API server."""
+@asynccontextmanager
+async def lifespan(app: FastAPI) -> AsyncIterator[None]:
+    """Handle database management when running app."""
     if "quotes" not in database:
         print("Adding quotes entry to database")
         database["quotes"] = []
 
+    yield
 
-@app.on_event("shutdown")
-def on_shutdown() -> None:
-    """Close database when stopping API server."""
     database.close()
+
+
+app = FastAPI(lifespan=lifespan)
 
 
 @app.post("/quote")
