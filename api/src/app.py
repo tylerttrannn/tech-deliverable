@@ -39,9 +39,8 @@ def post_message(name: str = Form(), message: str = Form()) -> RedirectResponse:
     Process a user submitting a new quote.
     You should not modify this function except for the return value.
     """
-    now = datetime.now().replace(microsecond=0)
-
-    quote = Quote(name=name, message=message, time=now.isoformat())
+    now = datetime.now()
+    quote = Quote(name=name, message=message, time=now.isoformat(timespec="seconds"))
     database["quotes"].append(quote)
 
     # You may modify the return value as needed to support other functionality
