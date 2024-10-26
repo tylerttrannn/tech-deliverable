@@ -1,8 +1,8 @@
 from datetime import datetime
-from typing import TypedDict
 
 from fastapi import FastAPI, Form, status
 from fastapi.responses import RedirectResponse
+from typing_extensions import TypedDict
 
 from services.database import JSONDatabase
 
