@@ -15,7 +15,7 @@ class Quote(TypedDict):
     time: str
 
 
-database: JSONDatabase[list[Quote]] = JSONDatabase("data/database.json")
+database: JSONDatabase[list[Quote]] = JSONDatabase("../data/database.json")
 
 
 @asynccontextmanager
@@ -56,7 +56,7 @@ async def retrieve_quotes(maxAge: str) -> List[Quote]:
     filtering via the week, month, year or all quotes
     included 
     """ 
-
+    now = datetime.now()
     if maxAge == "lastWeek":
         cutoff = now - timedelta(weeks = 1 )
 
@@ -68,15 +68,15 @@ async def retrieve_quotes(maxAge: str) -> List[Quote]:
     
     else:
         cutoff = None 
+
     
     filteredQuotes = []
-    now = datetime.now()
 
     if "quotes" in database: 
         for quote in database["quotes"]:
             quote_time = datetime.strptime(quote["time"], "%Y-%m-%dT%H:%M:%S")
 
-            if quote_time >= cutoff or cutoff is None :
+            if cutoff is None or quote_time >= cutoff:
                 filteredQuotes.append(quote)
 
     return filteredQuotes 
