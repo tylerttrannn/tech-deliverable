@@ -37,7 +37,7 @@ function App() {
 				},
 				body: new URLSearchParams({
 					name: name,
-					message: message
+					message: message,
 				}),
 			});
 
@@ -68,7 +68,6 @@ function App() {
 
 			</div>
 		
-			{/* TODO: implement custom form submission logic to not refresh the page */}
 			<div className = "quoteForm"> 
 				<form onSubmit = {submitForm}>
 					<label htmlFor="input-name">Name</label>
@@ -83,7 +82,7 @@ function App() {
 				<h2>Previous Quotes</h2>
 				<div className="messages">		
 					{quotes.map((quote, index) => (
-						<Quote key={index} name={quote.user} message={quote.message} />
+						<Quote key={index} name={quote.name} message={quote.message} date={new Date(quote.time).toLocaleString()} />
 					))}
 				</div>
 			</div>
