@@ -1,8 +1,8 @@
 import "./App.css";
+import Quote from "./Quote";
 
 function App() {
-
-
+	const [quotes, setQuotes] = useState([]);
 
 	return (
 		<div className="App">
@@ -21,13 +21,11 @@ function App() {
 
 			<h2>Previous Quotes</h2>
 			{/* TODO: Display the actual quotes from the database */}
-
 			<div className="messages">
-				<p>Peter Anteater</p>
-				<p>Zot Zot Zot!</p>
-				<p>Every day</p>
+				{quotes.map((quote, index) => (
+					<Quote key={index} name={quote.user} message={quote.message} />
+				))}
 			</div>
-
 
 		</div>
 	);
