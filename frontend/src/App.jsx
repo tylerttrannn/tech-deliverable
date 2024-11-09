@@ -68,7 +68,7 @@ function App() {
 			</div>
 		
 			<div className = "formContainer"> 
-				<h2>Submit a quote</h2>
+				<h2>Submit a Quote!</h2>
 				<form onSubmit = {submitForm} className = "formInput">
 					<label htmlFor="input-name">Name</label>
 					<input type="text" name="name" id="input-name" value={name} onChange={(e) => setName(e.target.value)} required />
