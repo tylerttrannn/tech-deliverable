@@ -1,8 +1,9 @@
+import './Quote.css'
+
 function Quote({ name, message }) {
     return (
       <div className="QuoteContainer">
-        <div>
-          <h1>{name}</h1>
+        <div className = "quote">
           <h1>{message}</h1>
         </div>
       </div>
