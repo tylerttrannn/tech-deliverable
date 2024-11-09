@@ -6,6 +6,9 @@ import React, { useState, useEffect } from 'react';
 function App() {
 	const [quotes, setQuotes] = useState([]);
 	const [filter, setFilter] = useState("");
+	const [name, setName] = useState("");
+	const [message, setMessage] = useState("");
+  
 
 	useEffect(() => {
 		fetchQuotes()
@@ -24,8 +27,32 @@ function App() {
 		}
 	}
 
+	async function submitForm(event){
+		event.preventDefault(); 
+		try {
+			const response = await fetch('/api/quote', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/x-www-form-urlencoded',
+				},
+				body: new URLSearchParams({
+					name: name,
+					message: message
+				}),
+			});
 
-	
+			if (response.ok) {
+				console.log("Quote submitted successfully");
+				fetchQuotes();
+			} else {
+				console.log("Error submitting the quote");
+			}
+		} 
+		catch (error){
+			console.log("There was an issue with submiting the quote", error); 
+		}
+	}
+
 	return (
 		<div className="App">
 			{/* TODO: include an icon for the quote book */}
@@ -43,11 +70,11 @@ function App() {
 		
 			{/* TODO: implement custom form submission logic to not refresh the page */}
 			<div className = "quoteForm"> 
-				<form action="/api/quote" method="post">
+				<form onSubmit = {submitForm}>
 					<label htmlFor="input-name">Name</label>
-					<input type="text" name="name" id="input-name" required />
+					<input type="text" name="name" id="input-name" value={name} onChange={(e) => setName(e.target.value)} required />
 					<label htmlFor="input-message">Quote</label>
-					<input type="text" name="message" id="input-message" required />
+					<input type="text" name="message" id="input-message" value={message} onChange={(e) => setMessage(e.target.value)} required />
 					<button type="submit">Submit</button>
 				</form>
 			</div>
