@@ -1,5 +1,32 @@
-
-
-.quote{
-    background-color: red;
-}
+.QuoteContainer {
+    background-color: #f9f9f9; 
+    padding: 20px;            
+    margin: 10px 0;            
+    border-radius: 10px;      
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+    max-width: 600px;          
+    width: 100%;              
+    font-family: 'Arial', sans-serif; 
+  }
+  
+  .quote {
+    display: flex;
+    flex-direction: column;   
+    justify-content: center;
+    align-items: flex-start;  
+  }
+  
+  .quote h1 {
+    font-size: 18px;         
+    font-weight: bold;        
+    margin-bottom: 5px;      
+    color: #333;             
+  }
+  
+  .quote p {
+    font-size: 16px;          
+    color: #555;              
+    font-style: italic;      
+    margin: 10px 0;           
+  }
+  
