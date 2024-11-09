@@ -57,6 +57,7 @@ function App() {
 		<div className="App">
 			{/* TODO: include an icon for the quote book */}
 			<div className = "header">
+				<img src= "../assets/quotebook.png"></img>
 				<h1>Hack at UCI Tech Deliverable</h1>
 				<h2>Submit a quote</h2>
 				<div>
