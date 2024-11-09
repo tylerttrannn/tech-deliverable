@@ -59,17 +59,17 @@ function App() {
 			<div className = "header">
 				<img src= "../assets/quotebook.png"></img>
 				<h1>Hack at UCI Tech Deliverable</h1>
-				<h2>Submit a quote</h2>
 				<div className = "filterButtons">
 					<button onClick={() => setFilter("lastWeek")}>This Week</button>
 					<button onClick={() => setFilter("month")}>Month</button>
 					<button onClick={() => setFilter("year")}>Year</button>
 					<button onClick={() => setFilter("")}>All</button>
-				</div>
+				</div>	
 			</div>
 		
-			<div className = "quoteForm"> 
-				<form onSubmit = {submitForm}>
+			<div className = "formContainer"> 
+				<h2>Submit a quote</h2>
+				<form onSubmit = {submitForm} className = "formInput">
 					<label htmlFor="input-name">Name</label>
 					<input type="text" name="name" id="input-name" value={name} onChange={(e) => setName(e.target.value)} required />
 					<label htmlFor="input-message">Quote</label>

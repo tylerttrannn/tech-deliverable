@@ -11,12 +11,22 @@
     align-items: center;
 }
 
-.quoteForm{
+.formContainer{
     display:flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
+.formInput{
+    display: flex;
+    flex-direction: column;
+    min-width: 400px;
+}
+
+.filterButtons button {
+    margin-right: 10px; 
+  }
 
 .previousQuotes{
     display:flex;
